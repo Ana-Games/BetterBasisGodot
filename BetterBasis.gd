@@ -1,7 +1,7 @@
-extends Node
+extends Resource
 class_name BetterBasis
 
-func set_up(original: Basis, new_up: Vector3) -> Basis:
+static func set_up(original: Basis, new_up: Vector3) -> Basis:
 	new_up = new_up.normalized()
 	var scale = Vector3(original.x.length(), original.y.length(), original.z.length())
 	var old_basis = original.orthonormalized() as Basis
@@ -28,7 +28,7 @@ func set_up(original: Basis, new_up: Vector3) -> Basis:
 	new_basis.z *= scale.z
 	return new_basis
 
-func set_right(original: Basis, new_right: Vector3) -> Basis:
+static func set_right(original: Basis, new_right: Vector3) -> Basis:
 	new_right = new_right.normalized()
 	var scale = Vector3(original.x.length(), original.y.length(), original.z.length())
 	var old_basis = original.orthonormalized() as Basis
@@ -56,7 +56,7 @@ func set_right(original: Basis, new_right: Vector3) -> Basis:
 	new_basis.z *= scale.z
 	return new_basis
 
-func set_forward(original: Basis, new_forward: Vector3) -> Basis:
+static func set_forward(original: Basis, new_forward: Vector3) -> Basis:
 	new_forward = new_forward.normalized()
 	var scale = Vector3(original.x.length(), original.y.length(), original.z.length())
 	var old_basis = original.orthonormalized() as Basis
@@ -83,11 +83,11 @@ func set_forward(original: Basis, new_forward: Vector3) -> Basis:
 	new_basis.z *= scale.z
 	return new_basis
 
-func get_up(basis : Basis) -> Vector3:
+static func get_up(basis : Basis) -> Vector3:
 	return basis.y.normalized()
 
-func get_right(basis : Basis) -> Vector3:
+static func get_right(basis : Basis) -> Vector3:
 	return basis.x.normalized()
 
-func get_forward(basis : Basis) -> Vector3:
+static func get_forward(basis : Basis) -> Vector3:
 	return basis.z.normalized()
